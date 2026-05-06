@@ -1,0 +1,19 @@
+{% extends "drf-yasg/swagger-ui.html" %}
+
+{% block footer %}
+<script>
+  // Override the default fetch to handle 401 errors
+  const originalFetch = window.fetch;
+  window.fetch = async function(...args) {
+    const response = await originalFetch(...args);
+    if (response.status === 401) {
+      // Clear the expired token from localStorage
+      localStorage.setItem('-drf-yasg-auth','{}');
+      // Optionally, reload the page or show a message
+      alert("Your session expired. Please log in again.");
+      window.location.reload();
+    }
+    return response;
+  };
+</script>
+{% endblock %}
