@@ -36,9 +36,9 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
-    path('v1/liste-entreprises/', views.liste_entreprises, name='liste-entreprises'),
-    path('v1/liste-categories/', views.liste_categories, name='liste-categories'),
-    path('v1/liste-contrats/', views.liste_contrats, name='liste-contrats'),
+    path('v1/01/liste-entreprises/', views.liste_entreprises, name='liste-entreprises'),
+    path('v1/02/liste-categories/', views.liste_categories, name='liste-categories'),
+    path('v1/03/liste-contrats/', views.liste_contrats, name='liste-contrats'),
     
     path('api/token/', views.CustomTokenObtainPairView.as_view(), name='token-obtain-pair'),
     path('api/token/refresh/', views.CustomTokenRefreshView.as_view(), name='token-refresh'),
