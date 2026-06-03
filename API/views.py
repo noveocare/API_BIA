@@ -130,8 +130,6 @@ def request_to_json(cursor):
         
         # Obtenir les métadonnées des colonnes
         columns = [col[0] for col in cursor.description]
-        print(cursor.description[0])
-        print(columns)
         
         rows = cursor.fetchall()
         data = []

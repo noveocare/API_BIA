@@ -35,9 +35,9 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "")
 DEBUG = os.environ.get("API_DB_ENGINE", "False")
 
 ALLOWED_HOSTS = env_list("DJANGO_ALLOWED_HOSTS", default=["localhost", "127.0.0.1"])
-CSRF_TRUSTED_ORIGINS = [
-    env_list("CSRF_TRUSTED_ORIGINS", default=["localhost", "127.0.0.1"])
-]
+# CSRF_TRUSTED_ORIGINS = [
+    # env_list("CSRF_TRUSTED_ORIGINS", default=["localhost", "127.0.0.1"])
+# ]
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {},
     'USE_SESSION_AUTH': False,  # Désactive l'authentification par session
@@ -56,7 +56,6 @@ SWAGGER_SETTINGS = {
     'DEFAULT_AUTO_SCHEMA_CLASS': 'drf_yasg.inspectors.SwaggerAutoSchema',
     'DEFAULT_INFO': 'API_BIA.urls.api_info',  # Pointe vers une fonction qui retourne les infos de l'API
     'VALIDATOR_URL': None,
-    
     'USE_SESSION_AUTH': False,
     'JSON_EDITOR': True,
 
@@ -98,7 +97,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'API.middleware.logging_middleware.APILoggingMiddleware',
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -216,5 +215,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# STATIC_ROOT = BASE_DIR / 'static'
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
